@@ -1,21 +1,17 @@
 const express = require('express')
 const route = express.Router()
 const cors = require('cors')
+const cursoControler = require('./controllers/CursoController')
 
 route.options('*', cors())
 
-route.get('/test', (req, res) => {
-    res.json(
-        {
-            "nome": "Fellype",
-            "telefone": "85999999999",
-            "curso": "Desenvolvimento de Sistemas"
-        }
-    )
-})
+// Endpoints
+// '/' URI
+// (request, response) => {} Função Callback
 
-route.get('/free', (req, res) => {
-    res.send("<div>Só acredito vendo</div>")
-})
+// Endpoint - CURSO
+route.get('/curso', cursoControler.findAllTurmas)
+
+
 
 module.exports = route

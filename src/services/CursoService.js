@@ -8,7 +8,7 @@ module.exports = {
                     reject(err)
                     return
                 }
-                resolve(result)
+                return resolve(result)
             })
         })
     }
