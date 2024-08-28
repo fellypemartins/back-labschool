@@ -10,7 +10,7 @@ module.exports = {
         // Invocar função que irá consultar o Banco de Dados para listar as turmas
         let cursos = await cursoService.readCursos()
 
-        // Tratamento de dados
+        // Tratamento de dados do Banco de Dados
         for (let curso of cursos) {
             json.result.push({
                 id: curso.id,
