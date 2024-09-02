@@ -2,6 +2,8 @@ const { response } = require('express')
 const cursoService = require('../services/CursoService')
 
 module.exports = {
+
+    // Método para consultar cursos
     findAllTurmas: async (req, res) => {
 
         // Declaração do objeto json que será retornado como resposta da requisição
@@ -20,5 +22,28 @@ module.exports = {
         }
 
         res.status(200).json(json)
+    },
+
+    // Método para cadastrar um curso
+    saveCurso: async (req, res) => {
+
+        let json = { error: "", result: {} }
+
+        // Receber dados via corpo da requisição para cadastrar o curso 
+        let nome = req.body.nomeCurso
+
+        if (nome) {
+            let curso = await cursoService.createCurso(nome)
+            json.result = {
+                id: curso.insertId,
+                nome: nome
+            } 
+        } else {
+            json.error = "Nome do curso é obrigatório"
+        }
+
+        res.status(201).json(json)
+
     }
+
 }

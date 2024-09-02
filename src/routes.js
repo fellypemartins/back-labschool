@@ -11,6 +11,7 @@ route.options('*', cors())
 
 // Endpoint - CURSO
 route.get('/curso', cursoControler.findAllTurmas)
+route.post('/curso', cursoControler.saveCurso)
 
 
 
