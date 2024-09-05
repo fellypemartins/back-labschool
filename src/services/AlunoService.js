@@ -18,9 +18,9 @@ module.exports = {
     },
 
     // Criar Aluno
-    createAluno: (foto, nome, telefone, email, data_nascimento, fk_curso) => {
+    createAluno: (foto, nome, telefone, email, data_nascimento, curso) => {
         return new Promise((resolve, reject) => {
-            database.query(`INSERT INTO aluno VALUES (${foto}, "${nome}", "${telefone}", "${data_nascimento}", ${fk_curso}, "${email}")`, (err, result) => {
+            database.query(`INSERT INTO aluno VALUES (null, ?, ?, ?, ?, ?, ?)`, [foto, nome, telefone, data_nascimento, curso, email], (err, result) => {
                 if (err) {
                     reject(err)
                     return
