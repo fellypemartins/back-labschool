@@ -1,4 +1,4 @@
-require('dotenv').config({path: 'variaveis.env'})
+require('dotenv').config({ path: 'variaveis.env' })
 
 const mysql = require('mysql2')
 
@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
     if (err) throw err
-    console.log(`Conectou! ${process.env.BD_NAME}`)
+    console.log(`Conectado ao database: ${process.env.BD_NAME}`)
 });
 
 module.exports = connection
