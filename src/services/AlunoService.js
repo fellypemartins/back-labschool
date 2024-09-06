@@ -1,6 +1,6 @@
 // Importação do database.js
 const { resolve } = require('path')
-const database = require('../database')
+const database = require('../database') 
 
 module.exports = {
 
@@ -20,8 +20,20 @@ module.exports = {
     // Criar Aluno
     createAluno: (foto, nome, telefone, email, data_nascimento, curso) => {
         return new Promise((resolve, reject) => {
-            database.query(`INSERT INTO aluno VALUES (null, ?, ?, ?, ?, ?, ?)`, [foto, nome, telefone, data_nascimento, curso, email], (err, result) => {
+            database.query('INSERT INTO aluno VALUES (null, ?, ?, ?, ?, ?, ?)', [foto, nome, telefone, data_nascimento, curso, email], (err, result) => {
                 if (err) {
+                    reject(err)
+                    return
+                }
+                return resolve(result)
+            })
+        })
+    },
+
+    updateAluno : (id, foto, nome, telefone, email, data_nascimento) => {
+        return new Promise((resolve, reject) => {
+            database.query('UPDATE aluno SET foto = ?, nome = ?, telefone = ?, data_nascimento = ?, email = ? WHERE id = ?', [foto, nome, telefone, data_nascimento, email, id], (err, result) => {
+                if (err){
                     reject(err)
                     return
                 }

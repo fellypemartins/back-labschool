@@ -41,7 +41,7 @@ module.exports = {
                 nome: nome
             }
         }else{
-            json.error = "Nome do curso é obrigatório!"
+            json.error = 'Nome do curso é obrigatório!'
         }
 
         response.status(201).json(json)
@@ -65,7 +65,7 @@ module.exports = {
 
             if (cursoValid.lenght == 0) {
 
-                json.error = "Curso não encontrado!"
+                json.error = 'Curso não encontrado!'
                 response.status(404).json(json)
             
             } else {
@@ -80,7 +80,7 @@ module.exports = {
                 response.status(200).json(json)
             }
         } else {
-            json.error = "Id do Curso é obrigatório"
+            json.error = 'Id do Curso é obrigatório'
             response.status(404).json(json)
         }
     },
@@ -97,7 +97,7 @@ module.exports = {
 
             if(cursoValid.lenght == 0) {
 
-                json.error = "Curso não encontrado!"
+                json.error = 'Curso não encontrado!'
                 response.status(404).json(json)
             } else {
                 
@@ -106,7 +106,7 @@ module.exports = {
             }
 
         } else {
-            json.error = "Id do curso é obrigatório"
+            json.error = 'Id do curso é obrigatório'
             response.status(400).json(json)
         }
     }
